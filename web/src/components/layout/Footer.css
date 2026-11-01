@@ -1,0 +1,33 @@
+.site-footer {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 2.5rem 0;
+  color: var(--text-on-dark-muted);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.site-footer strong {
+  color: white;
+  font-family: var(--font-display);
+}
+
+.site-footer p {
+  margin: 0.4rem 0 0;
+  max-width: 28rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a:hover {
+  color: white;
+}

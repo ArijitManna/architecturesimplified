@@ -1,0 +1,77 @@
+.path-detail {
+  padding: 2rem 0 3rem;
+}
+
+.path-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  align-items: start;
+}
+
+.path-overview {
+  padding: 1.5rem;
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+}
+
+.path-overview h2 {
+  font-size: 1.35rem;
+}
+
+.path-stats {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1rem 0 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.path-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.path-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1rem;
+  padding: 1.15rem;
+  align-items: start;
+}
+
+.step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--gradient);
+  color: white;
+  font-weight: 700;
+}
+
+.path-step p {
+  margin: 0.35rem 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.step-meta {
+  font-size: 0.82rem;
+  color: var(--purple-600);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .path-layout {
+    grid-template-columns: 1fr;
+  }
+  .path-overview {
+    position: static;
+  }
+}

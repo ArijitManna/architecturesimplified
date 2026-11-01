@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: as-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-architect}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-architect}
+      POSTGRES_DB: ${POSTGRES_DB:-architecture_simplified}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./database/schema/001_initial.sql:/docker-entrypoint-initdb.d/001_initial.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-architect} -d ${POSTGRES_DB:-architecture_simplified}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    # Keep Postgres internal to the Docker network (not exposed publicly)
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: as-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-architect}:${POSTGRES_PASSWORD:-architect}@db:5432/${POSTGRES_DB:-architecture_simplified}
+      API_PORT: 4000
+      CORS_ORIGIN: ${CORS_ORIGIN:-*}
+      UPLOAD_DIR: /app/uploads
+    ports:
+      - "${API_PORT:-8084}:4000"
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      args:
+        # Relative /api works via nginx proxy in the web container
+        VITE_API_URL: ${VITE_API_URL:-/api}
+    container_name: as-web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-8085}:80"
+    depends_on:
+      - api
+
+volumes:
+  pgdata:

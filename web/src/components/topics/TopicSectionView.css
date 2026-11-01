@@ -1,0 +1,43 @@
+.topic-section {
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.topic-section-head {
+  margin-bottom: 1rem;
+}
+
+.section-type-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--purple-600);
+  margin-bottom: 0.45rem;
+}
+
+.topic-section h2 {
+  font-size: 1.35rem;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+}
+
+.section-exam {
+  border-left: 4px solid var(--warning);
+}
+
+.section-scenario {
+  border-left: 4px solid var(--blue-500);
+}
+
+.section-takeaway {
+  border-left: 4px solid var(--success);
+}
+
+.section-architecture {
+  border-left: 4px solid var(--purple-500);
+}

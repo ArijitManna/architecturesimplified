@@ -1,0 +1,63 @@
+.mental-model {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(59, 130, 246, 0.06)),
+    white;
+}
+
+.mental-model-visual {
+  display: grid;
+  place-items: center;
+}
+
+.mm-illustration {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+
+.mm-building {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background:
+    linear-gradient(160deg, #c4b5fd, #60a5fa 55%, #34d399);
+  box-shadow: inset 0 -20px 40px rgba(15, 23, 42, 0.15);
+}
+
+.mm-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 32px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.35), transparent 70%);
+  z-index: -1;
+}
+
+.mm-label {
+  color: var(--purple-600);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.mental-model-body h2 {
+  font-size: 1.45rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 700px) {
+  .mental-model {
+    grid-template-columns: 1fr;
+  }
+
+  .mm-illustration {
+    width: 100px;
+    height: 100px;
+  }
+}

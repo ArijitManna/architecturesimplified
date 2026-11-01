@@ -2,6 +2,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 ARG VITE_API_URL=/api
 ENV VITE_API_URL=$VITE_API_URL
+ENV NODE_OPTIONS=--dns-result-order=ipv4first
 
 COPY web/package.json ./web/
 RUN npm install --prefix web

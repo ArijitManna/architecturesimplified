@@ -21,6 +21,7 @@ services:
     build:
       context: .
       dockerfile: api/Dockerfile
+      network: host
     container_name: as-api
     restart: unless-stopped
     env_file:
@@ -42,6 +43,7 @@ services:
     build:
       context: .
       dockerfile: web/Dockerfile
+      network: host
       args:
         # Relative /api works via nginx proxy in the web container
         VITE_API_URL: ${VITE_API_URL:-/api}
